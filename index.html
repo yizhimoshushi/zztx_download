@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《字宙探险》</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* 深邃的夜空色 */
+            color: #e0e0e0; /* 主文字颜色 */
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 50%, rgba(40, 40, 60, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 20%, rgba(30, 30, 50, 0.2) 0%, transparent 20%);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #8c9eff, #448aff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 15px rgba(68, 138, 255, 0.3);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0a0a0;
+        }
+
+        /* Main Content Card */
+        .main-content {
+            background-color: #2d2d2d; /* 类似月球表面的深灰 */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #444;
+            position: relative;
+            overflow: hidden;
+        }
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #8c9eff, #448aff, #00bcd4);
+        }
+
+        /* Game Info Section */
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .info-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #8c9eff;
+            min-width: 100px;
+        }
+        .info-value {
+            flex: 1;
+        }
+
+        /* Screenshot Gallery */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .screenshot {
+            background-color: #3a3a3a;
+            border-radius: 8px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #444;
+            color: #666;
+            font-style: italic;
+            transition: transform 0.3s ease;
+        }
+        .screenshot:hover {
+            transform: scale(1.03);
+            border-color: #448aff;
+        }
+
+        /* Download Button */
+        .download-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #448aff, #00bcd4);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(68, 138, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(68, 138, 255, 0.6);
+            background: linear-gradient(135deg, #539bff, #00c8e6);
+        }
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .powered-by {
+            margin-top: 10px;
+            font-size: 0.8em;
+        }
+        .powered-by a {
+            color: #448aff;
+            text-decoration: none;
+        }
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+
+        /* Decorative Elements */
+        .crater {
+            position: absolute;
+            background-color: #222;
+            border-radius: 50%;
+            border: 1px solid #3a3a3a;
+        }
+        .crater:nth-child(1) { top: 10%; left: 15%; width: 20px; height: 20px; }
+        .crater:nth-child(2) { top: 25%; right: 20%; width: 35px; height: 35px; }
+        .crater:nth-child(3) { bottom: 15%; left: 25%; width: 15px; height: 15px; }
+        .crater:nth-child(4) { bottom: 30%; right: 10%; width: 25px; height: 25px; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>字宙探险</h1>
+        <p class="subtitle">在星辰大海中，用知识的力量收集矿物！</p>
+    </header>
+
+    <div class="main-content">
+        <!-- Decorative Craters -->
+        <div class="crater"></div>
+        <div class="crater"></div>
+        <div class="crater"></div>
+        <div class="crater"></div>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="info-label">游戏名称:</span>
+                <span class="info-value">字宙探险</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">好玩，快下</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">下载后，解压，点击里面'zztx.exe'即可玩</span>
+            </div>
+        </div>
+            <!--
+            <div class="info-item">
+                <span class="info-label">游戏类型:</span>
+                <span class="info-value">模拟经营 / 教育休闲 / 跑酷</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">美术风格:</span>
+                <span class="info-value">清新卡通画风</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">核心玩法:</span>
+                <span class="info-value">
+                    在基地建设并升级飞船。驾驶飞船在太空中探索，通过“地铁跑酷”式的玩法，收集带有单词的矿物。
+                    每次收集矿物时需进行单词翻译挑战（类似百词斩的选择题），答对即可获得“能源”。
+                    能源可用于建造和升级基地建筑，并为飞船补充燃料。
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">游戏特色:</span>
+                <ul class="info-value" style="list-style-type: disc; padding-left: 20px;">
+                    <li>寓教于乐：将语言学习与游戏探索完美结合。</li>
+                    <li>策略经营：精心规划基地布局，最大化收益。</li>
+                    <li>轻松跑酷：简单易上手的探索模式，充满乐趣。</li>
+                    <li>卡通美学：色彩明亮、形象可爱的视觉设计。</li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <h3>游戏截图预览</h3>
+        <div class="screenshot-gallery">
+            <div class="screenshot">[基地建设界面]</div>
+           <div class="screenshot">[飞船探索场景]</div>
+            <div class="screenshot">[单词答题界面]</div>
+            <div class="screenshot">[资源管理界面]</div>
+        </div>
+        -->
+
+        <div class="download-section">
+            <a href="https://gitee.com/yizhimoshushi_1/my_first_game/releases/download/v1.0.1/zztx.zip" class="download-btn" download>
+                🚀 立即下载《字宙探险》v1.0.1
+            </a>
+            <p style="margin-top: 10px; color: #a0a0a0;">文件格式: .zip | 大小: 好多 MB</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by <a href="https://gitee.com" target="_blank">Gitee</a> and <a href="https://github.com" target="_blank">Github</a></p>
+    </footer>
+
+</body>
+</html>
